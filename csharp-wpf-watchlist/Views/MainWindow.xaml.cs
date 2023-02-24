@@ -1,4 +1,5 @@
-﻿using System;
+﻿using csharp_wpf_watchlist.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,11 +42,15 @@ namespace csharp_wpf_watchlist.Views
         {
             try
             {
-
+                using (var noteContext = new NoteContext())
+                {
+                    var note = noteContext.Notes.Where(n => n.Email == "dmytrohaidaienko@example.com").ToList();
+                    WatchedListView.ItemsSource = note;
+                }
             }
             catch
             {
-
+                MessageBox.Show("Fail to refresh or display table!");
             }
         }
 

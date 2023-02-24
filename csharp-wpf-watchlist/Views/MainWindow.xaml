@@ -99,19 +99,19 @@
                                 <GridView>
                                     <GridViewColumn 
                                         Header="Title" 
-                                        DisplayMemberBinding="{Binding }" 
+                                        DisplayMemberBinding="{Binding NoteTitle}" 
                                         Width="300"/>
                                     <GridViewColumn 
                                         Header="Type" 
-                                        DisplayMemberBinding="{Binding }" 
+                                        DisplayMemberBinding="{Binding NoteType}" 
                                         Width="100"/>
                                     <GridViewColumn 
                                         Header="Episodes" 
-                                        DisplayMemberBinding="{Binding }" 
+                                        DisplayMemberBinding="{Binding NoteEpisodes}" 
                                         Width="100"/>
                                     <GridViewColumn 
                                         Header="Rating" 
-                                        DisplayMemberBinding="{Binding }" 
+                                        DisplayMemberBinding="{Binding NoteRating}" 
                                         Width="100"/>
                                 </GridView>
                             </ListView.View>
