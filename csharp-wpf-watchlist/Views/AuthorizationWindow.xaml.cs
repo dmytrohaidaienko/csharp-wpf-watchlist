@@ -1,4 +1,6 @@
-﻿using System;
+﻿using csharp_wpf_watchlist.ViewModels;
+using csharp_wpf_watchlist.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,11 +33,22 @@ namespace csharp_wpf_watchlist.Views
         {
             try
             {
-
+                using (var userContext = new UserContext())
+                {
+                    var user = userContext.Users.FirstOrDefault(u => u.Email == EmailTextBox.Text && u.Password == PasswordBox.Password);
+                    if (user != null)
+                    {
+                        MessageBox.Show("Correct!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email or password entered incorrectly!");
+                    }
+                }
             }
             catch
             {
-
+                MessageBox.Show("Database connection error.");
             }
         }
 
