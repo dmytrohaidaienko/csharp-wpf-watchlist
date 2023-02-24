@@ -38,7 +38,11 @@ namespace csharp_wpf_watchlist.Views
                     var user = userContext.Users.FirstOrDefault(u => u.Email == EmailTextBox.Text && u.Password == PasswordBox.Password);
                     if (user != null)
                     {
-                        MainWindow mainWindow = new MainWindow();
+                        String? currentEmail = user.Email;
+                        String? currentName = user.Name;
+                        String? currentSurname = user.Surname;
+
+                        MainWindow mainWindow = new MainWindow(currentEmail, currentName, currentSurname);
                         this.Close();
                         mainWindow.Show();
                     }

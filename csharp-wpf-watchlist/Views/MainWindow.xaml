@@ -60,10 +60,10 @@
                         Source="/Resources/Images/profile-photo.jpg"
                         Style="{StaticResource mainWindow_UserImage}"/>
                     <TextBlock 
-                        Text="Name Surname"
+                        Text="{Binding Path=FullName}"
                         HorizontalAlignment="Center"/>
                     <TextBlock 
-                        Text="Email"
+                        Text="{Binding Path=CurrentEmail}"
                         HorizontalAlignment="Center"/>
                 </StackPanel>
                 <Grid

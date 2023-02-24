@@ -17,9 +17,19 @@ namespace csharp_wpf_watchlist.Views
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public String CurrentUserEmail { get; set; }
+
+        public MainWindow(String currentEmail, String currentName, String currentSurname)
         {
             InitializeComponent();
+
+            CurrentUserEmail = currentEmail;
+
+            DataContext = new
+            {
+                FullName = $"{currentName} {currentSurname}",
+                CurrentEmail = currentEmail
+            };
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -44,7 +54,7 @@ namespace csharp_wpf_watchlist.Views
             {
                 using (var noteContext = new NoteContext())
                 {
-                    var note = noteContext.Notes.Where(n => n.Email == "dmytrohaidaienko@example.com").ToList();
+                    var note = noteContext.Notes.Where(n => n.Email == CurrentUserEmail).ToList();
                     WatchedListView.ItemsSource = note;
                 }
             }
