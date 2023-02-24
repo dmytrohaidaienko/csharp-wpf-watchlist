@@ -1,0 +1,109 @@
+﻿<Window x:Class="csharp_wpf_watchlist.Views.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:csharp_wpf_watchlist.Views"
+        mc:Ignorable="d"
+        Title="RegistrationWindow"
+        Height="400"
+        Width="660"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Window.Resources>
+        <ResourceDictionary Source="../Resources/Styles/RegistrationWindowStyles.xaml"/>
+    </Window.Resources>
+
+    <Border
+        MouseDown="Border_MouseDown"
+        Background="#F8F8F8"
+        CornerRadius="10">
+        <Border
+            CornerRadius="10"
+            Height="350"
+            Width="400"
+            Background="#FFFFFF">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel
+                    Orientation="Vertical"
+                    Grid.Column="0">
+                    <TextBlock
+                        Text="Name"
+                        Margin="24 24 24 8"
+                        Style="{StaticResource registrationWindow_TextBlock}"/>
+                    <TextBox
+                        x:Name="NameTextBox"
+                        Margin="24 0 24 24"
+                        Style="{StaticResource registrationWindow_TextBox}"/>
+                </StackPanel>
+                <StackPanel
+                    Orientation="Vertical"
+                    Grid.Column="1">
+                    <TextBlock
+                        Text="Surname"
+                        Margin="24 24 24 8"
+                        Style="{StaticResource registrationWindow_TextBlock}"/>
+                    <TextBox
+                        x:Name="SurnameTextBox"
+                        Margin="24 0 24 24"
+                        Style="{StaticResource registrationWindow_TextBox}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                    <TextBlock
+                        Text="Email"
+                        Style="{StaticResource registrationWindow_TextBlock}"
+                        Width="272"
+                        Margin="24 0 24 8"/>
+                    <TextBox
+                        x:Name="EmailTextBox"
+                        Style="{StaticResource registrationWindow_TextBox}"
+                        Width="272"
+                        Margin="24 0 24 24"/>
+                    <TextBlock
+                        Text="Password"
+                        Style="{StaticResource registrationWindow_TextBlock}"
+                        Width="272"
+                        Margin="24 0 24 8"/>
+                    <PasswordBox
+                        x:Name="PasswordBox"
+                        Style="{StaticResource registrationWindow_PasswordBox}"
+                        Width="272"
+                        Margin="24 0 24 24"/>
+                    <Button
+                        Content="Create"
+                        Name="RegistrationButton"
+                        Click="RegistrationButton_Click"
+                        Style="{StaticResource registrationWindow_Button}"/>
+                    <Grid Margin="0 24 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Column="0"
+                            Text="Already have account?"
+                            FontSize="14"
+                            TextAlignment="Right"
+                            Margin="0 0 5 0"/>
+                        <TextBlock
+                            Grid.Column="1"
+                            Text="Log in your account"
+                            MouseDown="LogIn_MouseDown"
+                            Style="{StaticResource logIn_TextBlock}"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Border>
+</Window>

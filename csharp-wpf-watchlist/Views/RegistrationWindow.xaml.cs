@@ -14,9 +14,9 @@ using System.Windows.Shapes;
 
 namespace csharp_wpf_watchlist.Views
 {
-    public partial class AuthorizationWindow : Window
+    public partial class RegistrationWindow : Window
     {
-        public AuthorizationWindow()
+        public RegistrationWindow()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace csharp_wpf_watchlist.Views
                 this.DragMove();
         }
 
-        private void AuthorizationButton_Click(object sender, RoutedEventArgs e)
+        private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -39,13 +39,13 @@ namespace csharp_wpf_watchlist.Views
             }
         }
 
-        private void CreateAccount_MouseDown(object sender, MouseButtonEventArgs e)
+        private void LogIn_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                RegistrationWindow registrationWindow = new RegistrationWindow();
+                AuthorizationWindow authorizationWindow = new AuthorizationWindow();
                 this.Close();
-                registrationWindow.Show();
+                authorizationWindow.Show();
             }
         }
     }
