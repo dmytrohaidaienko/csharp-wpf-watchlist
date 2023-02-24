@@ -38,7 +38,9 @@ namespace csharp_wpf_watchlist.Views
                     var user = userContext.Users.FirstOrDefault(u => u.Email == EmailTextBox.Text && u.Password == PasswordBox.Password);
                     if (user != null)
                     {
-                        MessageBox.Show("Correct!");
+                        MainWindow mainWindow = new MainWindow();
+                        this.Close();
+                        mainWindow.Show();
                     }
                     else
                     {
