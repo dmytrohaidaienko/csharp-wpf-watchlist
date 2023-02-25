@@ -36,10 +36,13 @@ namespace csharp_wpf_watchlist.Views
                     userContext.SaveChanges();
                 }
                 MessageBox.Show("Registration complete!");
+                AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+                this.Close();
+                authorizationWindow.Show();
             }
             catch
             {
-                MessageBox.Show("Database connection error.");
+                MessageBox.Show("Database connection error. Try again later.");
             }
         }
 

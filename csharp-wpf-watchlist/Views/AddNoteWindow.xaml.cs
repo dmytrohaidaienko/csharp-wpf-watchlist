@@ -1,4 +1,5 @@
-﻿using csharp_wpf_watchlist.ViewModels;
+﻿using csharp_wpf_watchlist.Models;
+using csharp_wpf_watchlist.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,21 +16,14 @@ using System.Windows.Shapes;
 
 namespace csharp_wpf_watchlist.Views
 {
-    public partial class MainWindow : Window
+    public partial class AddNoteWindow : Window
     {
-        public String CurrentUserEmail { get; set; }
+        public String NoteEmail { get; set; }
 
-        public MainWindow(String currentEmail, String currentName, String currentSurname)
+        public AddNoteWindow(String CurrentUserEmail)
         {
+            NoteEmail = CurrentUserEmail;
             InitializeComponent();
-
-            CurrentUserEmail = currentEmail;
-
-            DataContext = new
-            {
-                FullName = $"{currentName} {currentSurname}",
-                CurrentEmail = currentEmail
-            };
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -48,26 +42,29 @@ namespace csharp_wpf_watchlist.Views
             this.WindowState = WindowState.Minimized;
         }
 
-        private void RefreshTableButton_Click(object sender, RoutedEventArgs e)
+        private void AddNoteButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 using (var noteContext = new NoteContext())
                 {
-                    var note = noteContext.Notes.Where(n => n.Email == CurrentUserEmail).ToList();
-                    WatchedListView.ItemsSource = note;
+                    var newNote = new Note
+                    {
+                        Email = NoteEmail,
+                        NoteTitle = TitleTextBox.Text,
+                        NoteType = TypeComboBox.Text,
+                        NoteEpisodes = Int32.Parse(EpisodesTextBox.Text),
+                        NoteRating = Int32.Parse(RatingComboBox.Text),
+                    };
+                    noteContext.Notes.Add(newNote);
+                    noteContext.SaveChanges();
+                    MessageBox.Show("New note added!");
                 }
             }
             catch
             {
-                MessageBox.Show("Fail to refresh or display table!");
+                MessageBox.Show("Error to add new note. Try again later.");
             }
-        }
-
-        private void AddNoteButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddNoteWindow addNoteWindow = new AddNoteWindow(CurrentUserEmail);
-            addNoteWindow.ShowDialog();
         }
     }
 }
