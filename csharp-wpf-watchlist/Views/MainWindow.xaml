@@ -61,10 +61,16 @@
                         Style="{StaticResource mainWindow_UserImage}"/>
                     <TextBlock 
                         Text="{Binding Path=FullName}"
-                        HorizontalAlignment="Center"/>
+                        HorizontalAlignment="Center"
+                        Foreground="#252733"
+                        FontSize="20"
+                        />
                     <TextBlock 
                         Text="{Binding Path=CurrentEmail}"
-                        HorizontalAlignment="Center"/>
+                        HorizontalAlignment="Center"
+                        Foreground="#9FA2B4"
+                        FontSize="12"
+                        />
                 </StackPanel>
                 <Grid
                     Grid.Column="1">
